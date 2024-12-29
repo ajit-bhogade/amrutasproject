@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .cart-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-title {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-details {
+            display: flex;
+            align-items: center;
+        }
+
+        .item-image {
+            width: 80px;
+            height: 80px;
+            margin-right: 15px;
+            border-radius: 8px;
+            background-color: #eee;
+            object-fit: cover;
+        }
+
+        .item-name {
+            font-size: 18px;
+            font-weight: 500;
+        }
+
+        .item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-button {
+            width: 30px;
+            height: 30px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .quantity-input {
+            width: 50px;
+            text-align: center;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .item-price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .cart-summary {
+            margin-top: 20px;
+            text-align: right;
+        }
+
+        .total-price {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .checkout-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .checkout-button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="cart-container">
+        <div class="cart-title">My Cart</div>
+
+        <!-- Man T -shirt -->
+        <div class="cart-item" id="Man T -shirt">
+            <div class="item-details">
+                <img src="images/tshirt-img.png" alt="Product Image" class="item-image">
+                <div class="item-name">Man T -shirt</div>
+            </div>
+            <div class="item-quantity">
+                <button class="quantity-button" onclick="decressQuantity('tshirtquantity1', 'Man T -shirt')">-</button>
+                <input id="tshirtquantity1" type="number" class="quantity-input" min="1" value="1" disabled = true>
+                <button class="quantity-button" onclick="incressQuantity('tshirtquantity1', 'Man T -shirt')">+</button>
+            </div>
+            <div class="item-price" id="30">$30.00</div>
+            <button onclick="removeItem('Man T -shirt')">remove</button>
+        </div>
+
+        <!-- Man -shirt -->
+        <div class="cart-item" id="Man -shirt">
+            <div class="item-details">
+                <img src="images/dress-shirt-img.png" alt="Product Image" class="item-image">
+                <div class="item-name">Man -shirt</div>
+            </div>
+            <div class="item-quantity">
+                <button class="quantity-button" onclick="decressQuantity('shirtquantity1', 'Man -shirt')">-</button>
+                <input id="shirtquantity1" type="number" class="quantity-input" min="1" value="1" disabled = true>
+                <button class="quantity-button" onclick="incressQuantity('shirtquantity1', 'Man -shirt')">+</button>
+            </div>
+            <div class="item-price" id="30">$30.00</div>
+            <button onclick="removeItem('Man -shirt')">remove</button>
+        </div>
+
+        <!-- <div class="cart-item" id="Woman Scart">
+            <div class="item-details">
+                <img src="images/women-clothes-img.png" alt="Product Image" class="item-image">
+                <div class="item-name">Woman Scart</div>
+            </div>
+            <div class="item-quantity">
+                <button class="quantity-button">-</button>
+                <input id="quantity1" type="number" class="quantity-input" min="1" value="1">
+                <button class="quantity-button" onclick="incressQuantity()">+</button>
+            </div>
+            <div class="item-price" id="30">$30.00</div>
+        </div> -->
+
+        <!-- Woman Scart -->
+        <div class="cart-item" id="Woman Scart">
+            <div class="item-details">
+                <img src="images/women-clothes-img.png" alt="Product Image" class="item-image">
+                <div class="item-name">Woman Scart</div>
+            </div>
+            <div class="item-quantity">
+                <button class="quantity-button" onclick="decressQuantity('Scartquantity1', 'Woman Scart')">-</button>
+                <input id="Scartquantity1" type="number" class="quantity-input" min="1" value="1" disabled = true>
+                <button class="quantity-button" onclick="incressQuantity('Scartquantity1', 'Woman Scart')">+</button>
+            </div>
+            <div class="item-price" id="30">$30.00</div>
+            <button onclick="removeItem('Woman Scart')">remove</button>
+        </div>
+
+        <!-- laptop -->
+        <div class="cart-item" id="Laptop">
+            <div class="item-details">
+                <img src="images/laptop-img.png" alt="Product Image" class="item-image">
+                <div class="item-name">Laptop</div>
+            </div>
+            <div class="item-quantity">
+                <button class="quantity-button" onclick="decressQuantity('Laptopquantity1', 'Laptop')">-</button>
+                <input id="Laptopquantity1" type="number" class="quantity-input" min="1" value="1" disabled = true>
+                <button class="quantity-button" onclick="incressQuantity('Laptopquantity1', 'Laptop')">+</button>
+            </div>
+            <div class="item-price" id="30">$100.00</div>
+            <button onclick="removeItem('Laptop')">remove</button>
+        </div>
+
+         <!-- Mobile -->
+         <div class="cart-item" id="Mobile">
+            <div class="item-details">
+                <img src="images/mobile-img.png" alt="Product Image" class="item-image">
+                <div class="item-name">Mobile</div>
+            </div>
+            <div class="item-quantity">
+                <button class="quantity-button" onclick="decressQuantity('Mobilequantity1', 'Mobile')">-</button>
+                <input id="Mobilequantity1" type="number" class="quantity-input" min="1" value="1" disabled = true>
+                <button class="quantity-button" onclick="incressQuantity('Mobilequantity1', 'Mobile')">+</button>
+            </div>
+            <div class="item-price" id="30">$100.00</div>
+            <button onclick="removeItem('Mobile')">remove</button>
+        </div>
+
+         <!-- Computers -->
+         <div class="cart-item" id="Computers">
+            <div class="item-details">
+                <img src="images/computer-img.png" alt="Product Image" class="item-image">
+                <div class="item-name">Computers</div>
+            </div>
+            <div class="item-quantity">
+                <button class="quantity-button" onclick="decressQuantity('Computersquantity1', 'Computers')">-</button>
+                <input id="Computersquantity1" type="number" class="quantity-input" min="1" value="1" disabled = true>
+                <button class="quantity-button" onclick="incressQuantity('Computersquantity1', 'Computers')">+</button>
+            </div>
+            <div class="item-price" id="30">$100.00</div>
+            <button onclick="removeItem('Computers')">remove</button>
+        </div>
+
+         <!-- Jumkas -->
+         <div class="cart-item" id="Jumkas">
+            <div class="item-details">
+                <img src="images/jhumka-img.png" alt="Product Image" class="item-image">
+                <div class="item-name">Jumkas</div>
+            </div>
+            <div class="item-quantity">
+                <button class="quantity-button" onclick="decressQuantity('Jumkasquantity1', 'Jumkas')">-</button>
+                <input id="Jumkasquantity1" type="number" class="quantity-input" min="1" value="1" disabled = true>
+                <button class="quantity-button" onclick="incressQuantity('Jumkasquantity1', 'Jumkas')">+</button>
+            </div>
+            <div class="item-price" id="30">$100.00</div>
+            <button onclick="removeItem('Jumkas')">remove</button>
+        </div>
+
+        <!-- Necklaces -->
+        <div class="cart-item" id="Necklaces">
+            <div class="item-details">
+                <img src="images/neklesh-img.png" alt="Product Image" class="item-image">
+                <div class="item-name">Necklaces</div>
+            </div>
+            <div class="item-quantity">
+                <button class="quantity-button" onclick="decressQuantity('Necklacesquantity1', 'Necklaces')">-</button>
+                <input id="Necklacesquantity1" type="number" class="quantity-input" min="1" value="1" disabled = true>
+                <button class="quantity-button" onclick="incressQuantity('Necklacesquantity1', 'Necklaces')">+</button>
+            </div>
+            <div class="item-price" id="30">$100.00</div>
+            <button onclick="removeItem('Necklaces')">remove</button>
+        </div>
+
+        <!-- Kangans -->
+        <div class="cart-item" id="Kangans">
+            <div class="item-details">
+                <img src="images/kangan-img.png" alt="Product Image" class="item-image">
+                <div class="item-name">Kangans</div>
+            </div>
+            <div class="item-quantity">
+                <button class="quantity-button" onclick="decressQuantity('Kangansquantity1', 'Kangans')">-</button>
+                <input id="Kangansquantity1" type="number" class="quantity-input" min="1" value="1" disabled = true>
+                <button class="quantity-button" onclick="incressQuantity('Kangansquantity1', 'Kangans')">+</button>
+            </div>
+            <div class="item-price" id="30">$100.00</div>
+            <button onclick="removeItem('Kangans')">remove</button>
+        </div>
+
+        <div class="cart-summary">
+            <div class="total-price">Total: $<span id="total-price">0</span></div>
+            <a href="#" class="checkout-button">Proceed to Checkout</a>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function() {
+        document.getElementById('Man T -shirt').style.display = 'none';
+        document.getElementById('Man -shirt').style.display = 'none';
+        document.getElementById('Woman Scart').style.display = 'none';
+
+        document.getElementById('Laptop').style.display = 'none';
+        document.getElementById('Mobile').style.display = 'none';
+        document.getElementById('Computers').style.display = 'none';
+    
+        document.getElementById('Jumkas').style.display = 'none';
+        document.getElementById('Necklaces').style.display = 'none';
+        document.getElementById('Kangans').style.display = 'none';
+        
+        
+        
+        const dataContainer = document.getElementById("localStorageData");
+            let localStorageContent = [];
+
+            // Loop through all keys in localStorage
+            if (localStorage.length > 0) {
+                    for (let i = 0; i < localStorage.length; i++) {
+                    const key = localStorage.key(i); // Get the key
+                    const value = localStorage.getItem(key); // Get the value
+                    localStorageContent.push(JSON.parse(value));
+                    document.getElementById(key).style.display = 'block';
+                    console.log('document.getElementById===*====;', document.getElementById(key))
+                    console.log('document.getElementByIdfirstChild===*====;', document.getElementById(key).children[1].firstChild.nextSibling.nextSibling.nextSibling.value)
+                    if(key === 'Man T -shirt' || key === 'Man -shirt' || key === 'Woman Scart') {
+                        document.getElementById('total-price').innerText = Number(document.getElementById('total-price').innerText) + (Number(value) * 30);
+                        document.getElementById(key).children[1].firstChild.nextSibling.nextSibling.nextSibling.value = value;
+                    };
+                    if(key === 'Laptop' || key === 'Mobile' || key === 'Computers' || key === 'Jumkas' || key === 'Necklaces' || key === 'Kangans') {
+                        document.getElementById('total-price').innerText = Number(document.getElementById('total-price').innerText) + (Number(value) * 100);
+                        document.getElementById(key).children[1].firstChild.nextSibling.nextSibling.nextSibling.value = value;
+                    };
+                }
+            }
+    }
+    function removeItem (id) {
+        document.getElementById(id).style.display = 'none';
+        if((id === 'Man T -shirt' || id === 'Man -shirt' || id === 'Woman Scart') && (Number(document.getElementById('total-price').innerText) > 0)) {
+            const value = localStorage.getItem(id);
+            document.getElementById('total-price').innerText = Number(document.getElementById('total-price').innerText) - (Number(value)*30);
+        };
+        if((id === 'Laptop' || id === 'Mobile' || id === 'Computers' || id === 'Jumkas' || id === 'Necklaces' || id === 'Kangans') && (Number(document.getElementById('total-price').innerText) > 0)) {
+            console.log('myvalid=============================', id);
+            const value = localStorage.getItem(id);
+            console.log('myval=============================', value);
+            document.getElementById('total-price').innerText = Number(document.getElementById('total-price').innerText) - (Number(value)*100);
+        };
+        localStorage.removeItem(id);
+    };
+    function incressQuantity (id, key) {
+        const inputElement = document.getElementById(id);
+        if (inputElement) {
+            const currentValue = Number(inputElement.value);
+            if (currentValue > 0) {
+                // Increment the value and set it back to the input field
+                const newValue = currentValue + 1;
+                inputElement.value = newValue.toString();
+                localStorage.setItem(key, newValue)
+                
+                if((key === 'Man T -shirt' || key === 'Man -shirt' || key === 'Woman Scart') && (Number(document.getElementById('total-price').innerText) > 0)) {
+                    document.getElementById('total-price').innerText = Number(document.getElementById('total-price').innerText) + 30;
+                };
+                if((key === 'Laptop' || key === 'Mobile' || key === 'Computers' || key === 'Jumkas' || key === 'Necklaces' || key === 'Kangans') && (Number(document.getElementById('total-price').innerText) > 0)) {
+                    document.getElementById('total-price').innerText = Number(document.getElementById('total-price').innerText)+ 100;
+                };
+            }
+        }
+    };
+    function decressQuantity (id, key) {
+        const inputElement = document.getElementById(id);
+        if (inputElement) {
+            const currentValue = Number(inputElement.value);
+            if (currentValue > 0) {
+                // Increment the value and set it back to the input field
+                const newValue = currentValue - 1;
+                inputElement.value = newValue.toString();
+                localStorage.setItem(key, newValue)
+                
+                if((key === 'Man T -shirt' || key === 'Man -shirt' || key === 'Woman Scart') && (Number(document.getElementById('total-price').innerText) > 0)) {
+                    document.getElementById('total-price').innerText = Number(document.getElementById('total-price').innerText) - 30;
+                };
+                if((key === 'Laptop' || key === 'Mobile' || key === 'Computers' || key === 'Jumkas' || key === 'Necklaces' || key === 'Kangans') && (Number(document.getElementById('total-price').innerText) > 0)) {
+                    document.getElementById('total-price').innerText = Number(document.getElementById('total-price').innerText) - 100;
+                };
+            }
+        }
+    };
+ </script>
+</html>
